@@ -88,11 +88,11 @@
         removePopup();
         const popup = document.createElement('div');
         const randomId = Math.random().toString(36).substring(2, 15);
-        popup.id = 'ollama-popup-' + randomId;
-        popup.className = 'ollama-popup';
+        popup.id = 'gpt-popup-' + randomId;
+        popup.className = 'gpt-popup';
 
         const closeBtn = document.createElement('button');
-        closeBtn.className = 'ollama-close';
+        closeBtn.className = 'gpt-close';
         closeBtn.innerHTML = '&times;';
         closeBtn.title = 'Close';
         closeBtn.onclick = e => {
@@ -130,7 +130,7 @@
     }
 
     function animateRemovePopup(id) {
-        const popup = document.getElementById('ollama-popup-' + id);
+        const popup = document.getElementById('gpt-popup-' + id);
         if (popup && popup.classList.contains('show')) {
             popup.classList.remove('show');
             setTimeout(() => removePopup(id), 220);
@@ -141,9 +141,9 @@
 
     function removePopup(id) {
         if (!id) {
-            document.querySelectorAll('[id^="ollama-popup-"]').forEach(el => el.remove());
+            document.querySelectorAll('[id^="gpt-popup-"]').forEach(el => el.remove());
         } else {
-            const old = document.getElementById('ollama-popup-' + id);
+            const old = document.getElementById('gpt-popup-' + id);
             if (old) old.remove();
         }
     }

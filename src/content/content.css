@@ -1,0 +1,59 @@
+/* GPT popup styles for content script */
+.gpt-popup {
+    position: absolute;
+    background: rgba(30, 34, 44, 0.72);
+    color: #f5f6fa;
+    border: 1px solid rgba(220, 102, 67, 0.18);
+    padding: 14px 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+    z-index: 2147483647;
+    max-width: 340px;
+    cursor: pointer;
+    white-space: pre-wrap;
+    pointer-events: auto;
+    backdrop-filter: blur(12px) saturate(1.2);
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    transition: opacity 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
+    user-select: text;
+}
+.gpt-popup.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.gpt-popup.light {
+    background: rgba(255,255,255,0.85);
+    color: #23262f;
+    border: 1px solid rgba(220, 102, 67, 0.18);
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.10);
+}
+.gpt-popup strong {
+    font-weight: 600;
+    color: #dc6643;
+}
+.gpt-popup code {
+    background: rgba(220,102,67,0.10);
+    color: #dc6643;
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 94%;
+    font-family: inherit;
+}
+.gpt-popup .gpt-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 16px;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+.gpt-popup .gpt-close:hover {
+    opacity: 1;
+}
