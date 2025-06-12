@@ -1,9 +1,11 @@
+const ext = typeof browser !== 'undefined' ? browser : chrome;
+
 (() => {
     let lastSelection = '';
 
     async function getTheme() {
         try {
-            const { theme = 'light' } = await chrome.storage.sync.get(['theme']);
+            const { theme = 'light' } = await ext.storage.sync.get(['theme']);
             return theme === 'dark' ? 'dark' : 'light';
         } catch {
             return 'light';
@@ -11,9 +13,9 @@
     }
 
     async function isEnabledForSite() {
-        if (!chrome.storage || !chrome.storage.sync) return false;
+        if (!ext.storage || !ext.storage.sync) return false;
         try {
-            const { enabledSites = {} } = await chrome.storage.sync.get(['enabledSites']);
+            const { enabledSites = {} } = await ext.storage.sync.get(['enabledSites']);
             return enabledSites[location.hostname] === true;
         } catch {
             return false;
@@ -25,7 +27,7 @@
         handleSelection(e.pageX, e.pageY, window.getSelection().toString());
     });
 
-    chrome.runtime.onMessage.addListener(async (msg) => {
+    ext.runtime.onMessage.addListener(async (msg) => {
         if (msg.type !== 'GPT_CONTEXT_SEARCH') return;
         if (!(await isEnabledForSite())) return;
         const sel = msg.selection;
@@ -39,7 +41,7 @@
 
         let apiKey, model, maxTokens;
         try {
-            ({ apiKey, model, maxTokens } = await chrome.storage.sync.get(['apiKey', 'model', 'maxTokens']));
+            ({ apiKey, model, maxTokens } = await ext.storage.sync.get(['apiKey', 'model', 'maxTokens']));
         } catch {
             showPopup(pageX, pageY, 'Failed to load API key.');
             return;

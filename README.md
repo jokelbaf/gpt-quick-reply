@@ -10,13 +10,17 @@ A simple browser extension that helps you with your exams. Select text, send it 
 - **Per-site Enable:** Enable or disable the extension on specific sites.
 - **Light/Dark Theme:** Switch between light and dark popup themes.
 
+## Browser Compatibility
+
+This extension works on **Chrome, Edge, Opera, and most Chromium-based browsers**. The code uses the `browser` API where available, falling back to `chrome` for compatibility.
+
 ## Installation
 
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/jokelbaf/gpt-quick-reply.git
    ```
-2. **Open Chrome and go to:** `chrome://extensions/`
+2. **Open Chrome/Firefox/Edge/Opera and go to:** `chrome://extensions/` or `about:addons`
 3. **Enable Developer mode** (top right).
 4. **Click "Load unpacked"** and select the cloned `gpt-quick-reply` folder.
 
@@ -40,5 +44,3 @@ A simple browser extension that helps you with your exams. Select text, send it 
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
-
-

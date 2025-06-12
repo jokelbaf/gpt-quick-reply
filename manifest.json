@@ -15,26 +15,26 @@
     "action": {
         "default_popup": "src/popup/popup.html",
         "default_icon": {
-            "16": "/public/icons/16.png",
-            "32": "/public/icons/32.png",
-            "48": "/public/icons/48.png",
-            "128": "/public/icons/128.png"
+            "16": "public/icons/16.png",
+            "32": "public/icons/32.png",
+            "48": "public/icons/48.png",
+            "128": "public/icons/128.png"
         }
     },
     "icons": {
-        "16": "/public/icons/16.png",
-        "32": "/public/icons/32.png",
-        "48": "/public/icons/48.png",
-        "128": "/public/icons/128.png"
+        "16": "public/icons/16.png",
+        "32": "public/icons/32.png",
+        "48": "public/icons/48.png",
+        "128": "public/icons/128.png"
     },
     "background": {
-        "service_worker": "/src/background/background.js"
+        "service_worker": "src/background/background.js"
     },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["/src/content/content.js"],
-            "css": ["/src/content/content.css"]
+            "js": ["src/content/content.js"],
+            "css": ["src/content/content.css"]
         }
     ]
 }

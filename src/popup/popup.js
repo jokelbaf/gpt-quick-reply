@@ -1,3 +1,5 @@
+const ext = typeof browser !== 'undefined' ? browser : chrome;
+
 document.addEventListener('DOMContentLoaded', async () => {
     const apiKeyInput = document.getElementById('apiKey');
     const enableSiteInput = document.getElementById('enableSite');
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const maxTokensInput = document.getElementById('maxTokens');
 
     try {
-        const { theme = 'light' } = await chrome.storage.sync.get(['theme']);
+        const { theme = 'light' } = await ext.storage.sync.get(['theme']);
         setTheme(theme);
         updateThemeIcon(theme);
         themeLabel.textContent = theme === 'dark' ? 'Dark' : 'Light';
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             updateThemeIcon(newTheme);
             themeLabel.textContent = newTheme === 'dark' ? 'Dark' : 'Light';
             try {
-                await chrome.storage.sync.set({ theme: newTheme });
+                await ext.storage.sync.set({ theme: newTheme });
             } catch (err) {
                 status.textContent = 'Theme save failed!';
             }
@@ -34,25 +36,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         function updateThemeIcon(theme) {
             themeIcon.innerHTML = theme === 'dark'
-                ? `<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M15.5 13.5A7 7 0 0 1 6.5 4.5a7 7 0 1 0 9 9z" fill="#f5f6fa"/>
+                ? `<svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
+                    <path d='M15.5 13.5A7 7 0 0 1 6.5 4.5a7 7 0 1 0 9 9z' fill='#f5f6fa'/>
                    </svg>`
-                : `<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="5" fill="#f5f6fa"/>
-                    <g stroke="#f5f6fa" stroke-width="2">
-                        <line x1="10" y1="1" x2="10" y2="4"/>
-                        <line x1="10" y1="16" x2="10" y2="19"/>
-                        <line x1="1" y1="10" x2="4" y2="10"/>
-                        <line x1="16" y1="10" x2="19" y2="10"/>
-                        <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
-                        <line x1="13.66" y1="13.66" x2="15.78" y2="15.78"/>
-                        <line x1="4.22" y1="15.78" x2="6.34" y2="13.66"/>
-                        <line x1="13.66" y1="6.34" x2="15.78" y2="4.22"/>
+                : `<svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
+                    <circle cx='10' cy='10' r='5' fill='#f5f6fa'/>
+                    <g stroke='#f5f6fa' stroke-width='2'>
+                        <line x1='10' y1='1' x2='10' y2='4'/>
+                        <line x1='10' y1='16' x2='10' y2='19'/>
+                        <line x1='1' y1='10' x2='4' y2='10'/>
+                        <line x1='16' y1='10' x2='19' y2='10'/>
+                        <line x1='4.22' y1='4.22' x2='6.34' y2='6.34'/>
+                        <line x1='13.66' y1='13.66' x2='15.78' y2='15.78'/>
+                        <line x1='4.22' y1='15.78' x2='6.34' y2='13.66'/>
+                        <line x1='13.66' y1='6.34' x2='15.78' y2='4.22'/>
                     </g>
                    </svg>`;
         }
 
-        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        const [tab] = await ext.tabs.query({ active: true, currentWindow: true });
         let hostname = '';
         try {
             hostname = new URL(tab.url).hostname;
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             hostname = '';
         }
 
-        const { apiKey = '', enabledSites = {}, model = 'o4-mini', maxTokens = 256 } = await chrome.storage.sync.get(['apiKey', 'enabledSites', 'model', 'maxTokens']);
+        const { apiKey = '', enabledSites = {}, model = 'o4-mini', maxTokens = 256 } = await ext.storage.sync.get(['apiKey', 'enabledSites', 'model', 'maxTokens']);
         apiKeyInput.value = apiKey;
         enableSiteInput.checked = !!enabledSites[hostname];
         modelSelect.value = model || 'o4-mini';
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             newMaxTokens = Math.max(100, Math.min(2500, newMaxTokens));
             maxTokensInput.value = newMaxTokens; // update UI if clamped
             try {
-                await chrome.storage.sync.set({
+                await ext.storage.sync.set({
                     apiKey: newApiKey,
                     enabledSites: newEnabledSites,
                     model: newModel,
