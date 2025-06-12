@@ -13,15 +13,9 @@ ext.contextMenus.onClicked.addListener(async (info, tab) => {
     const selection = info.selectionText?.trim();
     if (!selection) return;
 
-    try {
-        const url = new URL(tab.url || '');
-        const { enabledSites = {} } = await ext.storage.sync.get(['enabledSites']);
-        if (!enabledSites[url.hostname]) return;
-        ext.tabs.sendMessage(tab.id, {
-            type: 'GPT_CONTEXT_SEARCH',
-            selection
-        });
-    } catch (err) {
-        // Ignore invalid URL or storage errors
-    }
+    // Always send the message, regardless of enabledSites
+    ext.tabs.sendMessage(tab.id, {
+        type: 'GPT_CONTEXT_SEARCH',
+        selection
+    });
 });

@@ -23,13 +23,13 @@ const ext = typeof browser !== 'undefined' ? browser : chrome;
     }
 
     document.addEventListener('mouseup', async e => {
-        if (!(await isEnabledForSite())) return;
+        const enabled = await isEnabledForSite();
+        if (!enabled) return;
         handleSelection(e.pageX, e.pageY, window.getSelection().toString());
     });
 
     ext.runtime.onMessage.addListener(async (msg) => {
         if (msg.type !== 'GPT_CONTEXT_SEARCH') return;
-        if (!(await isEnabledForSite())) return;
         const sel = msg.selection;
         handleSelection(null, null, sel);
     });
