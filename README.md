@@ -2,6 +2,33 @@
 
 A simple browser extension that helps you with your exams. Select text, send it to the OpenAI API, and get a sneaky popup reply.
 
+## Demo
+
+Here is a quick demo of the extension in action.
+
+<table>
+   <tr>
+      <td align="center">
+         <img src="demo/action.gif" alt="Action" width="460px"/><br/>
+         <b>Extension in Action</b>
+      </td>
+   </tr>
+</table>
+
+### Light/Dark Mode
+<table>
+   <tr>
+      <td align="center">
+         <img src="demo/popup-dark.png" alt="Popup Dark" width="220"/><br/>
+         <b>Popup - Dark Mode</b>
+      </td>
+      <td align="center">
+         <img src="demo/popup-light.png" alt="Popup Light" width="220"/><br/>
+         <b>Popup - Light Mode</b>
+      </td>
+   </tr>
+</table>
+
 ## Features
 
 - **Quick Answers:** Select any text on a webpage and get an instant answer from GPT in a popup.
@@ -20,7 +47,7 @@ This extension works on **Chrome, Edge, Opera, and most Chromium-based browsers*
    ```sh
    git clone https://github.com/jokelbaf/gpt-quick-reply.git
    ```
-2. **Open Chrome/Firefox/Edge/Opera and go to:** `chrome://extensions/` or `about:addons`
+2. **Open Chrome/Edge/Opera and go to:** `chrome://extensions/` or `about:addons`
 3. **Enable Developer mode** (top right).
 4. **Click "Load unpacked"** and select the cloned `gpt-quick-reply` folder.
 
