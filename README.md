@@ -70,4 +70,4 @@ This extension works on **Chrome, Edge, Opera, and most Chromium-based browsers*
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License. See [LICENSE](LICENSE.md) for details.
