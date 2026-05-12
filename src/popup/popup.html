@@ -17,22 +17,12 @@
             </button>
             <span class="toggle-label" id="themeLabel">Light</span>
         </div>
-        <label class="model-label">
+        <label class="model-label" id="modelLabel">
             <span>Model:</span>
-            <select id="modelSelect">
-                <option value="gpt-4.5-preview">gpt-4.5-preview</option>
-                <option value="gpt-4.1">gpt-4.1</option>
-                <option value="gpt-4o">gpt-4o</option>
-                <option value="o1">o1</option>
-                <option value="o3">o3</option>
-                <option value="gpt-4.1-mini">gpt-4.1-mini</option>
-                <option value="gpt-4.1-nano">gpt-4.1-nano</option>
-                <option value="gpt-4o-mini">gpt-4o-mini</option>
-                <option value="o1-mini">o1-mini</option>
-                <option value="o3-mini">o3-mini</option>
-                <option value="o4-mini">o4-mini</option>
-            </select>
+            <select id="modelSelect" disabled></select>
         </label>
+        <div id="modelStatus" class="model-status" role="status" aria-live="polite"></div>
+        <button id="clearModelCache" class="secondary-button" type="button">Clear model cache</button>
         <label class="tokens-label">
             <span>Max tokens:</span>
             <input type="number" id="maxTokens" min="100" max="2500" step="1" value="256">
